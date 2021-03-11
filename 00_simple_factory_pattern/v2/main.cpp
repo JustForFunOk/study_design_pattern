@@ -3,6 +3,8 @@
 
 int main()
 {
+    Operation* operation = nullptr;
+    
     while(1)
     {
         double number1, number2;
@@ -17,7 +19,10 @@ int main()
         std::cout << "Input number2: ";
         std::cin >> number2;
 
-        std::cout << "Result = " << Operation::getResult(number1, oper, number2) << std::endl;
+        operation = Factory::createOperator(oper);
+        auto result = operation->getResult(number1, number2);
+
+        std::cout << "Result = " << result << std::endl;
         std::cout << "--------------" << std::endl;       
     }
 
