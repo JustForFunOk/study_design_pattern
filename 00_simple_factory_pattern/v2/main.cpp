@@ -1,10 +1,9 @@
 #include <iostream>  // cin cout
+#include <memory>  // shared_ptr
 #include "factory.h"
 
 int main()
-{
-    Operation* operation = nullptr;
-    
+{   
     while(1)
     {
         double number1, number2;
@@ -19,7 +18,8 @@ int main()
         std::cout << "Input number2: ";
         std::cin >> number2;
 
-        operation = Factory::createOperator(oper);
+        auto operation = Factory::createOperator(oper);
+        
         auto result = operation->getResult(number1, number2);
 
         std::cout << "Result = " << result << std::endl;

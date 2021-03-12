@@ -8,23 +8,23 @@
 class Factory
 {
 public:
-    static Operation* createOperator(char oper)
+    static std::shared_ptr<Operation> createOperator(char oper)
     {
-        Operation* operation = nullptr;
+        std::shared_ptr<Operation> operation;
         
         switch(oper)
         {
             case '+':
-                operation = new Add();
+                operation = std::shared_ptr<Operation>(new Add());
                 break;
             case '-':
-                operation = new Subtract();
+                operation = std::shared_ptr<Operation>(new Subtract());
                 break;
             case '*':
-                operation = new Multiply();
+                operation = std::shared_ptr<Operation>(new Multiply());
                 break;
             case '/':
-                operation = new Divide();
+                operation = std::shared_ptr<Operation>(new Divide());
                 break;
         }
 
